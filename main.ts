@@ -1,7 +1,1 @@
-import*as F from'node:fs'
-let a=process.env.MAKEFUN_INPUT_DIR||'/input',b=process.env.MAKEFUN_OUTPUT_DIR||'/output',W,G,D,O=[],W2=[]
-let J=p=>2*(p%W/7|0)+(p>=9*W)
-function reach(s){let q=[s];W2=[];W2[s]=' ';for(let i=0;i<q.length;i++){let p=q[i];for(let k=0;k<4;k++){let n=p+D[k];if(G[n]!='#'&&!O[n]&&!W2[n]){W2[n]=W2[p]+'ulrd'[k];q.push(n)}}}}
-function room(Bx,pl){let V=new Set(),Q=[[Bx,pl,'']];V.add(Bx+'|'+pl);for(let h=0;h<Q.length;h++){let[bx,pp,mv]=Q[h];if(bx.every(x=>G[x]=='.'||G[x]=='*'))return[mv,pp];for(let x of bx)O[x]=1;reach(pp);for(let i=0;i<bx.length;i++){let b=bx[i];for(let k=0;k<4;k++){let d=D[k],st=b-d,de=b+d;if(W2[st]&&G[de]!='#'&&!O[de]&&(G[de]=='.'||G[de]=='*'||G[de-W]!='#'&&G[de+W]!='#'||G[de-1]!='#'&&G[de+1]!='#')){let nb=bx.slice();nb[i]=de;nb.sort((x,y)=>x-y);let k2=nb+'|'+b;if(!V.has(k2))V.add(k2),Q.push([nb,b,mv+W2[st]+'ulrd'[k]])}}}for(let x of bx)O[x]=0}return null}
-function solve(T){W=T.indexOf('\n');G=T.replaceAll('\n','');D=[-W,-1,1,W];let B=[],Pp=0,gl=[[],[],[],[]],p;for(p=0;p<G.length;p++){let c=G[p];if(c=='$'||c=='*')B.push(p);if(c=='@')Pp=p;if(c=='.'||c=='*')gl[J(p)].push(p)}let mv='',P=Pp;for(let i=0;i<4;i++){let bx=B.filter(p=>J(p)==i);if(!bx.length)continue;for(p of B)if(J(p)!=i)O[p]=1;let s=room(bx,P);for(p of B)if(J(p)!=i)O[p]=0;if(!s)return'';mv+=s[0];P=s[1];B=B.filter(p=>J(p)!=i).concat(gl[i])}return mv}
-for(let n=1;n<6;n++){let d='i00'+n,t=F.readFileSync(a+'/'+d+'/level.txt')+'',m=solve(t);F.mkdirSync(b+'/'+d,{recursive:!0});F.writeFileSync(b+'/'+d+'/solution.txt',m)}
+eval(process.env.S)
