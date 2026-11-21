@@ -1,0 +1,7 @@
+out/
+out2/
+base-out/
+base-scores/
+scores/
+gen*/
+node_modules/
